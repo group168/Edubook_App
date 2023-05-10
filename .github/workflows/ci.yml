@@ -7,7 +7,6 @@ on:
       - develop
       - main
       - release
-      - hotfixes
   pull_request:
     type: [opened, reopened, synchronize, labeled, unlabeled]
     branches:
@@ -20,5 +19,9 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: "14"
+      - name: Codacy Security Scan
+      run: npx codacy-coverage report -r coverage/coverage-final.json
+      env:
+          CODACY_PROJECT_TOKEN: ${{ secrets.CODACY_PROJECT_TOKEN }}
       - run: npm install -g bats
       - run: bats -v
