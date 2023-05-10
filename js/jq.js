@@ -32,7 +32,7 @@ $(".product__panel-item").click(function () {
 //Get the button
 var mybutton = document.getElementById("myBtn-scroll");
 
-// When the user scrolls down 20px from the top of the document, show the button
+// Khi người dùng cuộn xuống 20px từ đầu tài liệu, hiển thị nút
 window.onscroll = function () {
   scrollFunction();
 };
@@ -47,7 +47,7 @@ function scrollFunction() {
   }
 }
 
-// When the user clicks on the button, scroll to the top of the document
+// Khi người dùng click vào button thì cuộn lên đầu tài liệu
 function topFunction() {
   document.body.scrollTop = 0;
   document.documentElement.scrollTop = 0;
