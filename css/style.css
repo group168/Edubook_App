@@ -79,24 +79,10 @@ body{
     padding-left: 0;
 }
 
-.header__heading {
-
-}
-
-.header__logo-link {
-
-}
-
-.header__logo-img {
-
-}
-
-
 .header__search {
     display: flex;
     align-items: center;
 }
-
 
 .header__search-select {
     height: 4rem;
@@ -168,10 +154,6 @@ body{
     color: var(--white-color);
 }
 
-.header__call-info {
-
-}
-
 .header__call-text {
     font-size: 13px;
     font-weight: 500;
@@ -218,7 +200,6 @@ body{
     font-size: 2rem;
     color: var(--white-color);
 }
-
 
 /*header navigation*/
 .header__nav-wrap{
@@ -285,7 +266,6 @@ body{
 /**/
 /* end header */
 
-
 /*footer*/
 .footer__top{
     background: #efefef;
@@ -310,10 +290,6 @@ body{
     margin-bottom: 1rem;
 }
 
-.footer__top-policy-item {
-
-}
-
 .footer__top-policy-link {
     font-size: 1.5rem;
     color: var(--text-color);
@@ -325,14 +301,6 @@ body{
     text-decoration: none;
 }
 
-.footer__top-contact-wrap {
-
-}
-
-.footer__top-contact-heading {
-
-}
-
 .footer__top-contact {
     display: flex;
     align-items: center;
@@ -342,14 +310,6 @@ body{
 
 .footer__top-contact-icon {
     margin-right: 2.6rem;
-}
-
-.footer__top-contact-img {
-
-}
-
-.footer__top-contact-phone-wrap {
-
 }
 
 .footer__top-contact-phone {
@@ -380,7 +340,6 @@ body{
     margin: 0 auto;
     line-height: 3.4rem;
 }
-
 
 @media (max-width:992px){
     .header__top{
@@ -437,7 +396,6 @@ body{
         max-width: 100%;
     }
 }
-
 
 #myBtn-scroll{
 
