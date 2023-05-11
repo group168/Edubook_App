@@ -1,5 +1,5 @@
 name: CI
-
+# Định nghĩa các sự kiện gây ra sẽ kích hoạt quy trình
 on:
   push:
     branches:
@@ -7,14 +7,17 @@ on:
       - main
       - release
   pull_request:
+    type: [opened, reopened, synchronize, labeled, unlabeled]
     branches:
       - develop
 
 jobs:
+  # Công việc để kiểm tra phiên bản
   check-bats-version:
     runs-on: ubuntu-latest
 
     steps:
+      # sao chép
       - name: Checkout code
         uses: actions/checkout@v3
 
@@ -22,7 +25,7 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: "14"
-
+        # Cài đặt các phụ thuộc (dependencies).
       - name: Install dependencies
         run: npm install
 
@@ -43,9 +46,8 @@ jobs:
           node-version: "14"
 
       - name: Install Codacy GitHub Action
-        uses: codacy/codacy-analysis-cli-action@3.0.0
-
-      - name: Run Codacy Security Scan
-        run: npx codacy-analysis-cli analyze -r coverage/coverage-final.json
-        env:
-          CODACY_PROJECT_TOKEN: ${{ secrets.CODACY_PROJECT_TOKEN }}
+        uses: codacy/coverage-action@v1
+        with:
+          # chạy quét và báo cáo kết quả.
+          # project-token: ${{ secrets.CODACY_PROJECT_TOKEN }}
+          coverage-reports: coverage/coverage-final.json
