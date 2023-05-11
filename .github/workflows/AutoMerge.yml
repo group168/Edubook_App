@@ -1,0 +1,25 @@
+name: Auto Merge
+
+on:
+  push:
+    branches:
+      - develop
+
+jobs:
+  merge-to-main:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: "14"
+
+      - name: Merge to release
+        run: |
+          git checkout release
+          git merge --no-ff develop -m "Merge develop into release"
+          git push origin release
