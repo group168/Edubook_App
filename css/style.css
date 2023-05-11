@@ -106,7 +106,7 @@ body{
     border: none;
     border-radius: 0.2rem 0 0 0.2rem;
     border-right: 1px solid var(--border-color);
-    width: 10%;
+    width: 35%;
     padding: 0 .6rem;
 }
 
