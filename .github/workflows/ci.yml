@@ -1,4 +1,5 @@
 name: CI
+
 on:
   push:
     path:
@@ -11,17 +12,43 @@ on:
     type: [opened, reopened, synchronize, labeled, unlabeled]
     branches:
       - develop
+
 jobs:
   check-bats-version:
     runs-on: ubuntu-latest
+
     steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
         with:
           node-version: "14"
-      - name: Codacy Security Scan
-      run: npx codacy-coverage report -r coverage/coverage-final.json
-      env:
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Run tests
+        run: npm test
+
+  codacy-security-scan:
+    needs: check-bats-version
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: "14"
+
+      - name: Install Codacy CLI
+        run: npm install -g codacy-coverage
+
+      - name: Run Codacy Security Scan
+        run: npx codacy-coverage report -r coverage/coverage-final.json
+        env:
           CODACY_PROJECT_TOKEN: ${{ secrets.CODACY_PROJECT_TOKEN }}
-      - run: npm install -g bats
-      - run: bats -v
