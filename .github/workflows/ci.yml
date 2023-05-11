@@ -2,14 +2,11 @@ name: CI
 
 on:
   push:
-    path:
-      - "!README.md"
     branches:
       - develop
       - main
       - release
   pull_request:
-    type: [opened, reopened, synchronize, labeled, unlabeled]
     branches:
       - develop
 
@@ -45,10 +42,10 @@ jobs:
         with:
           node-version: "14"
 
-      - name: Install Codacy CLI
-        run: npm install -g codacy-coverage
+      - name: Install Codacy GitHub Action
+        uses: codacy/codacy-analysis-cli-action@3.0.0
 
       - name: Run Codacy Security Scan
-        run: npx codacy-coverage report -r coverage/coverage-final.json
+        run: npx codacy-analysis-cli analyze -r coverage/coverage-final.json
         env:
           CODACY_PROJECT_TOKEN: ${{ secrets.CODACY_PROJECT_TOKEN }}
