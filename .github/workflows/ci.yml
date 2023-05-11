@@ -43,9 +43,7 @@ jobs:
           node-version: "14"
 
       - name: Install Codacy GitHub Action
-        uses: codacy/codacy-analysis-cli-action@3.0.0
-
-      - name: Run Codacy Security Scan
-        run: npx codacy-analysis-cli analyze -r coverage/coverage-final.json
-        env:
-          CODACY_PROJECT_TOKEN: ${{ secrets.CODACY_PROJECT_TOKEN }}
+        uses: codacy/coverage-action@v1
+        with:
+          project-token: ${{ secrets.CODACY_PROJECT_TOKEN }}
+          coverage-reports: coverage/coverage-final.json
